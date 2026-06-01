@@ -1,6 +1,15 @@
+import torch
+
+_old_torch_load = torch.load
+
+def _torch_load_trusted(*args, **kwargs):
+    kwargs["weights_only"] = False
+    return _old_torch_load(*args, **kwargs)
+
+torch.load = _torch_load_trusted
 from pathlib import Path
 from ms_hgnn.lightning_py.gnnLightning import train_model, evaluate_model
-import torch
+
 from ms_hgnn.visualization import visualize_model_outputs_regression
 import pandas
 import os

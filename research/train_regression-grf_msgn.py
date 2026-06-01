@@ -3,6 +3,7 @@ from ms_hgnn.lightning_py.gnnLightning import train_model, evaluate_model
 import torch
 from ms_hgnn.visualization import visualize_model_outputs_regression
 import numpy as np
+import os
 
 def main(seed,
          batch_size=32,
@@ -20,8 +21,8 @@ def main(seed,
          ckpt_path=None):
     # ================================= CHANGE THESE ===================================
     wandb_api_key = os.getenv('WANDB_API_KEY')
-	if wandb_api_key is None:
-		raise ValueError("Please set WANDB_API_KEY in ~/.bashrc. export WANDB_API_KEY='your_api_key_here'")
+    if wandb_api_key is None:
+        raise ValueError("Please set WANDB_API_KEY in ~/.bashrc. export WANDB_API_KEY='your_api_key_here'")
     # ==================================================================================
 
     # Define model information
